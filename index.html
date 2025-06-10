@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Formulir Paylater ke WhatsApp</title>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Formulir Paylater ke WhatsApp
+  </title>
   <style>
-    body {
+   body {
       font-family: Arial, sans-serif;
       background: #f2f2f2;
       padding: 20px;
@@ -45,34 +47,94 @@
       background-color: #1ebe5d;
     }
   </style>
-</head>
-<body>
+ </head>
+ <body>
   <div class="form-container">
-    <h2>Formulir Paylater</h2>
-    <form id="paylaterForm">
-      <label for="jenis">Jenis Paylater:</label>
-      <select id="jenis" required>
-        <option value="">-- Pilih --</option>
-        <option value="Shopee">Shopee</option>
-        <option value="Kredivo">Kredivo</option>
-        <option value="Kredinex">Kredinex</option>
-        <option value="Blibli">Blibli</option>
-        <option value="Tiktok">Tiktok</option>
-        <option value="Tokped">Tokped</option>
-      </select>
-
-      <label for="limit">Limit Tersedia (Rp):</label>
-      <input type="text" id="limit" placeholder="Contoh: 5.000.000" required />
-
-      <label for="pencairan">Pencairan (Rp):</label>
-      <input type="text" id="pencairan" placeholder="Contoh: 4.500.000" required />
-
-      <button type="submit">Kirim ke WhatsApp</button>
-    </form>
+   <h2>
+    Formulir Paylater
+   </h2>
+   <form id="paylaterForm">
+    <label for="nama">
+     Nama:
+    </label>
+    <input id="nama" placeholder="Nama lengkap Anda" required="True" type="text"/>
+    <label for="jenis">
+     Jenis Paylater:
+    </label>
+    <select id="jenis" required="">
+     <option value="">
+      -- Pilih --
+     </option>
+     <option value="Shopee">
+      Shopee
+     </option>
+     <option value="Tiktok">
+      Tiktok
+     </option>
+     <option value="Kredivo">
+      Kredivo
+     </option>
+     <option value="BRI Ceria">
+      BRI Ceria
+     </option>
+     <option value="Credinex">
+      Credinex
+     </option>
+     <option value="Tokopedia Card">
+      Tokopedia Card
+     </option>
+     <option value="Blibli Paylater">
+      Blibli Paylater
+     </option>
+     <option value="Bukalapak">
+      Bukalapak
+     </option>
+     <option value="BCA Paylater">
+      BCA Paylater
+     </option>
+     <option value="YUP Paylater">
+      YUP Paylater
+     </option>
+     <option value="Gopaylater">
+      Gopaylater
+     </option>
+     <option value="Credit Card">
+      Credit Card
+     </option>
+     <option value="Lazada">
+      Lazada
+     </option>
+     <option value="Livin By Mandiri">
+      Livin By Mandiri
+     </option>
+     <option value="Julo Paylater">
+      Julo Paylater
+     </option>
+     <option value="Flip">
+      Flip
+     </option>
+     <option value="Indodana">
+      Indodana
+     </option>
+     <option value="Atome">
+      Atome
+     </option>
+    </select>
+    <label for="limit">
+     Limit Tersedia (Rp):
+    </label>
+    <input id="limit" placeholder="Contoh: 5.000.000" required="" type="text"/>
+    <label for="pencairan">
+     Pencairan (Rp):
+    </label>
+    <input id="pencairan" placeholder="Contoh: 4.500.000" required="" type="text"/>
+    <button type="submit">
+     Kirim ke WhatsApp
+    </button>
+   </form>
   </div>
-
   <script>
-    const limitInput = document.getElementById('limit');
+   const limitInput = document.getElementById('limit');
     const pencairanInput = document.getElementById('pencairan');
 
     function formatRupiah(value) {
@@ -103,6 +165,7 @@
     document.getElementById('paylaterForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
+      const nama = document.getElementById('nama').value;
       const jenis = document.getElementById('jenis').value;
       if (jenis === '') {
         alert('Silakan pilih jenis Paylater terlebih dahulu.');
@@ -114,17 +177,14 @@
 
       const nomorWA = '628561622561';
       const pesan = 
-        `Halo, saya ingin mengajukan pencairan Paylater.
-` +
-        `*Jenis:* ${jenis}
-` +
-        `*Limit Tersedia:* Rp ${limit}
-` +
+        `Halo, saya ingin mengajukan pencairan Paylater.\n` + `*Nama:* ${nama}\n` +
+        `*Jenis:* ${jenis}\n` +
+        `*Limit Tersedia:* Rp ${limit}\n` +
         `*Pencairan:* Rp ${pencairan}`;
 
       const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
       window.open(url, '_blank');
     });
   </script>
-</body>
+ </body>
 </html>
