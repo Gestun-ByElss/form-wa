@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulir ke WhatsApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 30px;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1ebe5d;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Hubungi Kami via WhatsApp</h2>
+    <form id="waForm">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="pesan">Pesan:</label>
+      <textarea id="pesan" rows="4" required></textarea>
+
+      <button type="submit">Kirim ke WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('waForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const nama = document.getElementById('nama').value;
+      const email = document.getElementById('email').value;
+      const pesan = document.getElementById('pesan').value;
+      const nomorWA = '628561622561'; // nomor +62 8561622561
+      const teks = `Halo, saya ${nama} (Email: ${email}).%0A%0A${pesan}`;
+      const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(teks)}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
