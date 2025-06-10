@@ -114,10 +114,13 @@
 
       const nomorWA = '628561622561';
       const pesan = 
-        `Halo, saya ingin mengajukan pencairan Paylater.%0A` +
-        `- Jenis: ${jenis}%0A` +
-        `- Limit Tersedia: Rp ${limit}%0A` +
-        `- Pencairan: Rp ${pencairan}`;
+        `Halo, saya ingin mengajukan pencairan Paylater.
+` +
+        `*Jenis:* ${jenis}
+` +
+        `*Limit Tersedia:* Rp ${limit}
+` +
+        `*Pencairan:* Rp ${pencairan}`;
 
       const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
       window.open(url, '_blank');
