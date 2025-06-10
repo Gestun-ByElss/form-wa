@@ -3,42 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Formulir ke WhatsApp</title>
+  <title>Formulir Paylater ke WhatsApp</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      padding: 30px;
+      background: #f2f2f2;
+      padding: 20px;
     }
     .form-container {
-      max-width: 400px;
+      max-width: 420px;
       margin: auto;
-      background: #fff;
+      background: #ffffff;
       padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     label {
+      margin-top: 15px;
       font-weight: bold;
       display: block;
-      margin-top: 15px;
     }
-    input, textarea {
+    select, input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
     }
     button {
-      margin-top: 20px;
+      margin-top: 25px;
+      width: 100%;
       padding: 12px;
       background-color: #25D366;
       color: white;
-      border: none;
-      width: 100%;
-      border-radius: 5px;
       font-size: 16px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
     button:hover {
@@ -48,30 +48,45 @@
 </head>
 <body>
   <div class="form-container">
-    <h2>Hubungi Kami via WhatsApp</h2>
-    <form id="waForm">
-      <label for="nama">Nama:</label>
-      <input type="text" id="nama" required />
+    <h2>Formulir Paylater</h2>
+    <form id="paylaterForm">
+      <label for="jenis">Jenis Paylater:</label>
+      <select id="jenis" required>
+        <option value="">-- Pilih --</option>
+        <option value="Shopee">Shopee</option>
+        <option value="Kredivo">Kredivo</option>
+        <option value="Kredinex">Kredinex</option>
+        <option value="Blibli">Blibli</option>
+        <option value="Tiktok">Tiktok</option>
+        <option value="Tokped">Tokped</option>
+      </select>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" required />
+      <label for="limit">Limit Tersedia (Rp):</label>
+      <input type="text" id="limit" placeholder="Contoh: 5.000.000" required />
 
-      <label for="pesan">Pesan:</label>
-      <textarea id="pesan" rows="4" required></textarea>
+      <label for="pencairan">Pencairan (Rp):</label>
+      <input type="text" id="pencairan" placeholder="Contoh: 4.500.000" required />
 
       <button type="submit">Kirim ke WhatsApp</button>
     </form>
   </div>
 
   <script>
-    document.getElementById('waForm').addEventListener('submit', function(event) {
+    document.getElementById('paylaterForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      const nama = document.getElementById('nama').value;
-      const email = document.getElementById('email').value;
-      const pesan = document.getElementById('pesan').value;
-      const nomorWA = '628561622561'; // nomor +62 8561622561
-      const teks = `Halo, saya ${nama} (Email: ${email}).%0A%0A${pesan}`;
-      const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(teks)}`;
+
+      const jenis = document.getElementById('jenis').value;
+      const limit = document.getElementById('limit').value;
+      const pencairan = document.getElementById('pencairan').value;
+
+      const nomorWA = '628561622561';
+      const pesan = 
+        `Halo, saya ingin mengajukan pencairan Paylater.%0A` +
+        `- Jenis: ${jenis}%0A` +
+        `- Limit Tersedia: Rp ${limit}%0A` +
+        `- Pencairan: Rp ${pencairan}`;
+
+      const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
       window.open(url, '_blank');
     });
   </script>
