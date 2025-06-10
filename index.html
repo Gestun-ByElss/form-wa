@@ -72,12 +72,45 @@
   </div>
 
   <script>
+    const limitInput = document.getElementById('limit');
+    const pencairanInput = document.getElementById('pencairan');
+
+    function formatRupiah(value) {
+      const numberString = value.replace(/[^,\d]/g, '').toString();
+      const split = numberString.split(',');
+      const sisa = split[0].length % 3;
+      let rupiah = split[0].substr(0, sisa);
+      const ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+      if (ribuan) {
+        const separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+      }
+
+      return rupiah;
+    }
+
+    function handleFormat(input) {
+      input.addEventListener('input', () => {
+        const formatted = formatRupiah(input.value);
+        input.value = formatted;
+      });
+    }
+
+    handleFormat(limitInput);
+    handleFormat(pencairanInput);
+
     document.getElementById('paylaterForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
       const jenis = document.getElementById('jenis').value;
-      const limit = document.getElementById('limit').value;
-      const pencairan = document.getElementById('pencairan').value;
+      if (jenis === '') {
+        alert('Silakan pilih jenis Paylater terlebih dahulu.');
+        return;
+      }
+
+      const limit = limitInput.value;
+      const pencairan = pencairanInput.value;
 
       const nomorWA = '628561622561';
       const pesan = 
